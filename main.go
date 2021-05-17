@@ -29,7 +29,7 @@ var authProfile AuthProfile
 func main() {
 
 	authProfile = AuthProfile{
-		Token:          "ODljM2YzOGI5NzM3NDMxMDk4N2UwMTk1ODg1Y2Q2OTg=.eyJpbnN0aXR1dGlvbklkIjoiZWNkN2I5MmMtYjM1NC1lNjExLWFmMTMtNGNjYzZhMzJmODVkIiwibmFtZSI6IkdvQ2xlYXJCYW5rIiwidG9rZW4iOiIyRTMyQkIxMjU0NDU0RERDODg2RTExQjI1ODMyQ0I4QUE2MDU0RjQzODE5MzQ3NDk5MjFBNDEyMTJDN0I5NEJCQkNBOTc2NzhCQjFGNDYxMjk3MDA2MUZEQzRBNDVCMkEifQ==",
+		Token:          "",
 		PrivateKeyPath: "GoClearBank",
 		PublicKeyPath:  "GoClearBank.pub"}
 
