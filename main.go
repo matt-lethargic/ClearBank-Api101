@@ -13,7 +13,6 @@ import (
 	"net/http"
 	"time"
 
-	ds "clear.bank/digitalSignature"
 	"github.com/google/uuid"
 	"github.com/gorilla/mux"
 )
@@ -29,8 +28,8 @@ var authProfile AuthProfile
 func main() {
 
 	authProfile = AuthProfile{
-		Token:          "",
-		PrivateKeyPath: "GoClearBank",
+		Token:          "<token-here>",
+		PrivateKeyPath: "GoClearBank.key",
 		PublicKeyPath:  "GoClearBank.pub"}
 
 	r := mux.NewRouter()
@@ -62,7 +61,7 @@ func handleApi(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	dgitalSignature, err := ds.Generate(apiRequestText, privateKey)
+	dgitalSignature, err := Generate(apiRequestText, privateKey)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -133,7 +132,7 @@ func handleWebhook(w http.ResponseWriter, r *http.Request) {
 	// verify digital signature
 	digitalSignature := []byte(r.Header.Get("DigitalSignature"))
 
-	verified, err := ds.Verify(requestBodyBytes, digitalSignature, publicKey)
+	verified, err := Verify(requestBodyBytes, digitalSignature, publicKey)
 	if err != nil || !verified {
 		log.Println(err)
 	}
